@@ -1,42 +1,76 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// ResumeFeedback.tsx
-import React from "react";
+"use client";
+
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const ResumeFeedback = ({ feedback = [] }: { feedback: any[] }) => {
-  console.log(feedback)
-  if (!feedback.length)
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggleSection = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  if (!feedback.length) {
     return (
-      <div className="lg:basis-2/3 flex items-center justify-center h-full text-gray-500">
+      <div className="flex items-center justify-center text-gray-400 h-full">
         Upload a resume to get feedback
       </div>
     );
+  }
 
   return (
-    <div className="rounded-lg border border-[#EAEAEA] bg-[#F7F7F7] p-6 shadow-md lg:basis-2/3">
+    <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-lg">
       {feedback.map((section, index) => (
-        <div key={index} className="bg-[#F7F7F7] border  rounded-lg p-4 mb-8">
-          <div className="flex gap-5 items-center">
-            <h3 className="text-lg font-semibold">{section.title}</h3>
-            <span
-              className={`px-3 py-2 text-sm ${section.scoreInNumber >= 5.0 ? 'bg-[#02A8131A] text-[#02A813]' : 'bg-[#F7AF1A1A] text-[#F7AF1A]'} rounded-2xl font-semibold`}
-            >
-              {section.score}
-            </span>
-          </div>
-          <p className="text-gray-600 mt-2">{section.description}</p>
-          <hr className="my-3" />
-          <h4 className="font-semibold">Strengths</h4>
-          <ul className="list-disc list-inside text-gray-700">
-            {section.strengths.map((point: string, i: number) => (
-              <li key={i}>{point}</li>
-            ))}
-          </ul>
-          <h4 className="font-semibold mt-3">Areas for Improvement</h4>
-          <ul className="list-disc list-inside text-gray-700">
-            {section.improvements.map((point: string, i: number) => (
-              <li key={i}>{point}</li>
-            ))}
-          </ul>
+        <div key={index} className="border-b last:border-none">
+          <button
+            onClick={() => toggleSection(index)}
+            className="flex justify-between items-center w-full py-4 text-left"
+          >
+            <div className="flex gap-3 items-center">
+              <h3 className="font-semibold text-lg">{section.title}</h3>
+              <span
+                className={`px-2 py-1 text-xs font-semibold rounded-full ${
+                  section.scoreInNumber >= 5
+                    ? "bg-green-100 text-green-700"
+                    : "bg-yellow-100 text-yellow-700"
+                }`}
+              >
+                {section.score}
+              </span>
+            </div>
+            <span className="text-gray-500">{openIndex === index ? "−" : "+"}</span>
+          </button>
+
+          <AnimatePresence>
+            {openIndex === index && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                <div className="pb-6">
+                  <p className="text-gray-600 mb-4">{section.description}</p>
+
+                  <h4 className="font-semibold">Strengths</h4>
+                  <ul className="list-disc list-inside text-gray-700 mb-4">
+                    {section.strengths.map((point: string, i: number) => (
+                      <li key={i}>{point}</li>
+                    ))}
+                  </ul>
+
+                  <h4 className="font-semibold">Areas for Improvement</h4>
+                  <ul className="list-disc list-inside text-gray-700">
+                    {section.improvements.map((point: string, i: number) => (
+                      <li key={i}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       ))}
     </div>

@@ -41,6 +41,7 @@ const ResumeAnalysis = () => {
           scoreText={analysis?.scoreText}
           loading={loading}
           onUpload={handleUpload}
+          
         />
       </div>
       <ResumeFeedback feedback={analysis?.feedback} />

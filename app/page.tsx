@@ -1,19 +1,23 @@
-import Head from "next/head";
+// app/page.tsx
 import LandingHero from "@/components/LandingPage";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Resume Analyzer - Improve Your Resume with AI",
+  description: "Upload your resume and receive personalized feedback powered by AI. Improve your chances of landing your dream job today!",
+  keywords: ["resume analyzer", "resume feedback", "AI resume checker", "job application", "career tips"],
+  authors: [{ name: "Jafarscript" }],
+  openGraph: {
+    title: "Resume Analyzer - Improve Your Resume with AI",
+    description: "Upload your resume and receive personalized feedback powered by AI. Improve your chances of landing your dream job today!",
+    type: "website",
+  },
+};
 
 export default function Home() {
   return (
-    <>
-      <Head>
-        <title>Resume Analyzer - Improve Your Resume with AI</title>
-        <meta name="description" content="Upload your resume and receive personalized feedback powered by AI. Improve your chances of landing your dream job today!" />
-        <meta name="keywords" content="resume analyzer, resume feedback, AI resume checker, job application, career tips" />
-        <meta name="author" content="ResumeAnalyzer" />
-        <meta property="og:title" content="Resume Analyzer - Improve Your Resume with AI" />
-        <meta property="og:description" content="Upload your resume and receive personalized feedback powered by AI. Improve your chances of landing your dream job today!" />
-        <meta property="og:type" content="website" />
-      </Head>
+    <div>
       <LandingHero />
-    </>
+    </div>
   );
 }

@@ -37,14 +37,17 @@ const ResumeScoreCard = ({ score = 0, stats = {}, loading = false, onUpload, sco
         <input type="file" className="hidden" id="resume-upload" onChange={handleFileChange} />
         <label
           htmlFor="resume-upload"
-          className="mt-2 w-full text-center cursor-pointer rounded-full border-2 border-black text-white shadow-btnShadow bg-primary px-6 py-2"
+          className="mt-2 w-full text-center cursor-pointer rounded-full border-2 border-black text-gray-800 shadow-btnShadow bg-primary px-6 py-2"
         >
           {loading ? "Analyzing..." : "Upload and Rescan Resume"}
         </label>
+        
 
-        <button className="mt-2 w-full rounded-full border-2 border-[#E6E6E6]  px-6 py-2 text-gray-600 hover:bg-gray-50">
-          Edit Resume
-        </button>
+        <p className="text-sm text-gray-500 mt-4 text-center">
+          Upload your resume to get a score and personalized feedback.
+          <br />
+          (PDF, DOCX, and TXT formats supported)
+        </p>
 
         {stats && (
           <div className="w-full mt-6">

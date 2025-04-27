@@ -9,6 +9,9 @@ import ResumeFeedback from "@/components/ResumeFeedback";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import JobDescriptionInput from "@/components/JobDescriptionInput";
 
+
+
+
 const ResumeAnalysis = () => {
   const [analysis, setAnalysis] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
@@ -37,7 +40,6 @@ const ResumeAnalysis = () => {
         </div>
       )}
       <div className="w-full lg:w-1/3 flex flex-col gap-6">
-        <JobDescriptionInput value={jobDescription} onChange={setJobDescription} />
         <ResumeScoreCard
           score={analysis?.score}
           stats={analysis?.stats}
@@ -45,6 +47,7 @@ const ResumeAnalysis = () => {
           loading={loading}
           onUpload={handleUpload}
         />
+        <JobDescriptionInput value={jobDescription} onChange={setJobDescription} />
       </div>
       <div className="w-full lg:w-2/3">
         <ResumeFeedback feedback={analysis?.feedback} />
