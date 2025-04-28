@@ -1,35 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// lib/extractText.ts
-import { getDocument, GlobalWorkerOptions, type PDFDocumentLoadingTask } from 'pdfjs-dist';
+// lib/extractText.tsx
 import mammoth from "mammoth";
 
-// Create a declaration file for the worker
-// Add this in a new file called pdf-worker.d.ts in your project:
-// declare module 'pdfjs-dist/build/pdf.worker.entry';
-
-// Set up the worker properly
-import pdfWorker from 'pdfjs-dist/build/pdf.worker.entry';
-GlobalWorkerOptions.workerSrc = pdfWorker;
-
 export const extractTextFromPDF = async (file: File): Promise<string> => {
+  // Load PDF.js from CDN to avoid bundling issues
+  const pdfjsLib = await import('pdfjs-dist/webpack');
+  
+  // Set the worker source to a CDN
+  pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+  
   try {
     const arrayBuffer = await file.arrayBuffer();
-    
-    // Properly typed loading task
-    const loadingTask: PDFDocumentLoadingTask = getDocument({
-      data: new Uint8Array(arrayBuffer),
-      // Remove the problematic null assignments
-    });
-    
+    const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
     const pdf = await loadingTask.promise;
     
     let text = "";
     for (let i = 1; i <= pdf.numPages; i++) {
       const page = await pdf.getPage(i);
-      const content = await page.getTextContent();
-      const pageText = content.items
-        .filter((item: any) => 'str' in item)
-        .map((item: any) => item.str)
+      const textContent = await page.getTextContent();
+      const pageText = textContent.items
+        .map((item: any) => item.str || "")
         .join(" ");
       text += `\n${pageText}`;
     }
