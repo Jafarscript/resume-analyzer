@@ -42,6 +42,7 @@ const ResumeAnalysis = () => {
       )}
       <div className="flex flex-col min-h-screen gap-6 py-6 lg:flex-row">
       <div className="w-full lg:w-1/3 flex flex-col gap-6">
+      <JobDescriptionInput value={jobDescription} onChange={setJobDescription} />
         <ResumeScoreCard
           score={analysis?.score}
           stats={analysis?.stats}
@@ -49,7 +50,6 @@ const ResumeAnalysis = () => {
           loading={loading}
           onUpload={handleUpload}
         />
-        <JobDescriptionInput value={jobDescription} onChange={setJobDescription} />
       </div>
       <div className="w-full lg:w-2/3">
         <ResumeFeedback feedback={analysis?.feedback} />
