@@ -10,7 +10,7 @@ export default function Home() {
         Upload your resume, paste a job description (optional), and get instant feedback to optimize your chances of landing your dream job.
       </p>
       <Link href="/resume">
-        <button className="text-black border cursor-pointer rounded-full px-8 py-3 shadow-md">
+        <button className="text-black border border-black cursor-pointer rounded-full px-8 py-3 shadow-md">
           Get Started
         </button>
       </Link>
@@ -27,7 +27,7 @@ export default function Home() {
 
 function FeatureCard({ title, description }: { title: string; description: string }) {
   return (
-    <div className="border p-6 rounded-lg shadow-sm bg-white">
+    <div className="border border-black p-6 rounded-lg shadow-sm bg-white">
       <h3 className="text-xl font-semibold mb-2  text-black">{title}</h3>
       <p className="text-gray-500">{description}</p>
     </div>

@@ -6,7 +6,7 @@ const JobDescriptionInput = ({ value, onChange }: { value: string; onChange: (va
       </label>
       <textarea
         id="job-description"
-        className="w-full border rounded-lg p-3 text-sm resize-none"
+        className="w-full border rounded-lg p-3 text-sm resize-none text-black"
         rows={6}
         value={value}
         onChange={(e) => onChange(e.target.value)}
