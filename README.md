@@ -2,7 +2,7 @@
 
 A modern web application that analyzes resumes, provides scores and actionable feedback to help job seekers improve their resumes and increase their chances of landing interviews.
 
-![Resume Analyzer Screenshot](https://via.placeholder.com/800x400?text=Resume+Analyzer)
+![Resume Analyzer Screenshot](./public/home.png)
 
 ## Features
 
