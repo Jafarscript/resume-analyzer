@@ -33,7 +33,7 @@ const ResumeAnalysis = () => {
   };
 
   return (
-    <section className="px-4 py-6">
+    <section className="px-4 py-6 bg-white">
       <BackToHomeButton text="Back to Home" />
       {loading && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-white/70 flex items-center justify-center z-50">

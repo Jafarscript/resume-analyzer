@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen px-6 text-center">
+    <main className="flex flex-col items-center pt-20 lg:pt-0 justify-center min-h-screen px-6 text-center bg-white">
       <h1 className="text-4xl font-bold mb-6">
         Resume Analyzer Powered by AI
       </h1>
@@ -10,7 +10,7 @@ export default function Home() {
         Upload your resume, paste a job description (optional), and get instant feedback to optimize your chances of landing your dream job.
       </p>
       <Link href="/resume">
-        <button className="bg-primary text-black cursor-pointer rounded-full px-8 py-3 shadow-md hover:bg-primary-dark">
+        <button className="text-black border cursor-pointer rounded-full px-8 py-3 shadow-md">
           Get Started
         </button>
       </Link>
@@ -27,7 +27,7 @@ export default function Home() {
 
 function FeatureCard({ title, description }: { title: string; description: string }) {
   return (
-    <div className="border p-6 rounded-lg shadow-sm">
+    <div className="border p-6 rounded-lg shadow-sm bg-white">
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p className="text-gray-500">{description}</p>
     </div>
