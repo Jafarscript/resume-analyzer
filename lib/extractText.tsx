@@ -1,17 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // lib/extractText.ts
-import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf";
-import pdfjsWorker from "pdfjs-dist/legacy/build/pdf.worker.entry";
-
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
-
+import { getDocument, GlobalWorkerOptions } from "pdfjs-dist";
+import pdfjsWorker from "pdfjs-dist/build/pdf.worker.min.js";
 import mammoth from "mammoth";
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 export const extractTextFromPDF = async (file: File): Promise<string> => {
   const arrayBuffer = await file.arrayBuffer();
-  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+  const pdf = await getDocument({ data: arrayBuffer }).promise;
 
   let text = "";
   for (let i = 1; i <= pdf.numPages; i++) {

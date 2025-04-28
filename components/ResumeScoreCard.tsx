@@ -12,7 +12,7 @@ const ResumeScoreCard = ({ score = 0, stats = {}, loading = false, onUpload, sco
     <section className="lg:basis-1/3">
       <div className="flex flex-col items-center gap-5 rounded-lg border border-[#EAEAEA] bg-[#F7F7F7] px-8 py-8 shadow-md">
         <h3 className="text-lg font-semibold">Resume Score</h3>
-        <div className="relative w-full h-80 my-4">
+        <div className="relative w-full h-96 my-4">
           <svg viewBox="0 0 100 100" className="w-full h-full">
             <circle cx="50" cy="50" r="40" strokeWidth="5" stroke={score >= 70 ? "#dcf3de" : "#F3E8C9"} fill="none" />
             <circle
@@ -30,7 +30,7 @@ const ResumeScoreCard = ({ score = 0, stats = {}, loading = false, onUpload, sco
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden">
             <span className="text-5xl font-semibold">{score}%</span>
-            <span className="text-lg w-44 text-center text-gray-600">{scoreText}</span>
+            <span className="text-lg text-center text-gray-600">{scoreText}</span>
           </div>
         </div>
 
