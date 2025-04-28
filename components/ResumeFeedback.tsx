@@ -31,15 +31,23 @@ const ResumeFeedback = ({ feedback = [] }: { feedback: any[] }) => {
               <h3 className="font-semibold text-lg">{section.title}</h3>
               <span
                 className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                  section.scoreInNumber >= 5
+                  section.scoreInNumber >= 8
                     ? "bg-green-100 text-green-700"
-                    : "bg-yellow-100 text-yellow-700"
+                    : section.scoreInNumber >= 6
+                    ? "bg-blue-100 text-blue-700"
+                    : section.scoreInNumber >= 4
+                    ? "bg-yellow-100 text-yellow-700"
+                    : section.scoreInNumber >= 2
+                    ? "bg-orange-100 text-orange-700"
+                    : "bg-red-100 text-red-700"
                 }`}
               >
                 {section.score}
               </span>
             </div>
-            <span className="text-gray-500">{openIndex === index ? "−" : "+"}</span>
+            <span className="text-gray-500">
+              {openIndex === index ? "−" : "+"}
+            </span>
           </button>
 
           <AnimatePresence>
