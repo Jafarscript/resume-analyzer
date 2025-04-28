@@ -8,6 +8,7 @@ import ResumeScoreCard from "@//components/ResumeScoreCard";
 import ResumeFeedback from "@/components/ResumeFeedback";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import JobDescriptionInput from "@/components/JobDescriptionInput";
+import BackToHomeButton from "./BackToHomeButton";
 
 
 
@@ -32,12 +33,14 @@ const ResumeAnalysis = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen gap-6 py-6 lg:flex-row px-4">
+    <section className="px-4 py-6">
+      <BackToHomeButton text="Back to Home" />
       {loading && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-white/70 flex items-center justify-center z-50">
           <LoadingSpinner />
         </div>
       )}
+      <div className="flex flex-col min-h-screen gap-6 py-6 lg:flex-row">
       <div className="w-full lg:w-1/3 flex flex-col gap-6">
         <ResumeScoreCard
           score={analysis?.score}
@@ -52,6 +55,7 @@ const ResumeAnalysis = () => {
         <ResumeFeedback feedback={analysis?.feedback} />
       </div>
     </div>
+    </section>
   );
 };
 
