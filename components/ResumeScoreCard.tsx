@@ -28,9 +28,9 @@ const ResumeScoreCard = ({ score = 0, stats = {}, loading = false, onUpload, sco
               transform="rotate(-90 50 50)"
             />
           </svg>
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <div className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden">
             <span className="text-5xl font-semibold">{score}%</span>
-            <span className="text-xl text-gray-600">{scoreText}</span>
+            <span className="text-lg w-44 text-center text-gray-600">{scoreText}</span>
           </div>
         </div>
 
