@@ -1,145 +1,154 @@
-# Resume Analyzer
+# 📄 Resume Analyzer
 
-A modern web application that analyzes resumes, provides scores and actionable feedback to help job seekers improve their resumes and increase their chances of landing interviews.
+**Resume Analyzer** is a modern, fully client-side web application that helps job seekers optimize their resumes. Upload your file (PDF, DOCX, or TXT) and get instant scoring, detailed feedback, and actionable tips — all processed securely in your browser, without sending your data to any server.
 
 ![Resume Analyzer Screenshot](./public/home.png)
 
-## Features
+---
 
-- **Resume Parsing**: Upload resumes in PDF, DOCX, or TXT formats
-- **Comprehensive Analysis**: Get detailed feedback on various resume sections
-- **Score Visualization**: See your resume's overall score with a dynamic circular progress indicator
-- **Section-by-Section Breakdown**: Detailed scoring and feedback for each resume section
-- **Improvement Suggestions**: Actionable recommendations to enhance your resume
-- **Statistics**: Visual representation of your resume's strengths and weaknesses
+## ✨ Features
 
-## Tech Stack
+- **Client-Side Resume Upload**: Secure processing — your resume never leaves your browser
+- **Supported Formats**: PDF, DOCX, TXT
+- **Instant Analysis**: Real-time scoring and feedback
+- **Dynamic Score Visualization**: Circular progress indicator for your overall resume score
+- **Detailed Section Feedback**: Strengths and improvement areas per resume section
+- **Actionable Suggestions**: Easy-to-follow tips to boost your resume quality
+- **Visual Stats**: See your strengths and weaknesses at a glance
 
-- **Frontend**: Next.js, React, TypeScript, Tailwind CSS
-- **PDF Processing**: Server-side PDF parsing
-- **Document Processing**: Mammoth.js for DOCX parsing
+---
+
+## 🛠 Tech Stack
+
+- **Frontend**: Next.js 14 (App Router), React, TypeScript, Tailwind CSS
+- **Document Parsing**:
+  - `pdfjs-dist` for PDF text extraction
+  - Mammoth.js for DOCX files
+  - Native file reading for TXT files
 - **Deployment**: Vercel
 
-## Getting Started
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 16.x or later
+- Node.js 16+
 - npm or yarn
 
 ### Installation
 
-1. Clone the repository
-```bash
-git clone https://github.com/yourusername/resume-analyzer.git
-cd resume-analyzer
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/resume-analyzer.git
+   cd resume-analyzer
+   ```
 
-2. Install dependencies
-```bash
-npm install
-# or
-yarn install
-```
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-3. Run the development server
-```bash
-npm run dev
-# or
-yarn dev
-```
+3. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+4. **Visit** [http://localhost:3000](http://localhost:3000)
 
-## Usage
+---
 
-1. **Upload Resume**: Click the "Upload and Scan Resume" button to select your resume file
-2. **View Analysis**: After processing, view your overall score and section-by-section feedback
-3. **Implement Suggestions**: Follow the actionable recommendations to improve your resume
-4. **Rescan**: After making changes, upload your updated resume to see your improved score
+## 🧑‍💻 Usage
 
-## Project Structure
+1. **Upload Your Resume**: Click "Upload and Scan Resume" to select a file.
+2. **Analyze Instantly**: Get an overall score and detailed section breakdown.
+3. **Follow Suggestions**: Apply recommendations to improve your resume.
+4. **Rescan**: Re-upload an improved version and track your progress.
+
+---
+
+## 🗂 Project Structure
 
 ```
 resume-analyzer/
-├── components/            # React components
-│   ├── ResumeAnalysis.tsx # Main analysis component
-│   ├── ResumeScoreCard.tsx # Score visualization component
+├── components/            # Reusable UI Components
+│   ├── ResumeAnalysis.tsx  # Analysis and feedback logic
+│   ├── ResumeScoreCard.tsx # Score visualization
 │   └── ...
 ├── lib/                   # Utility functions
-│   ├── extractText.tsx    # Document text extraction
-│   └── ...
-├── pages/                 # Next.js pages
-│   ├── api/               # API routes
-│   │   └── extract-text.ts # Document processing API
-│   ├── _app.tsx
-│   └── index.tsx
-├── public/                # Static assets
-├── styles/                # CSS styles
+│   ├── extractText.tsx      # Document text extraction (PDF, DOCX, TXT)
+    ├── analyzeResumeWithGemini.ts      # Gemine analysis logic
+├── app/                   # App Router pages
+│   ├── page.tsx           # Home page
+│   ├── resume/page.tsx    # Resume analysis page
+├── public/                # Static assets (e.g., home.png)
+├── styles/                # Tailwind CSS styles
 └── ...
 ```
 
-## Document Processing
+---
 
-The application supports the following document formats:
+## 📄 Supported File Formats and Processing
 
-- **PDF**: Processed using server-side API for reliable text extraction
-- **DOCX**: Processed using Mammoth.js for accurate content extraction
-- **TXT**: Directly read as plain text
+- **PDF**: Text extraction using `pdfjs-dist` on the client-side
+- **DOCX**: Extracted via Mammoth.js
+- **TXT**: Read as plain text
 
-## Scoring System
+---
 
-The resume analysis provides scores on a scale of 0-100% with the following color-coded indicators:
+## 🎯 Scoring System
 
-- **90-100%**: Dark Green (excellent)
-- **80-89%**: Green (very good)
-- **70-79%**: Light Green (good)
-- **60-69%**: Blue (above average)
-- **50-59%**: Amber/Yellow (average)
-- **40-49%**: Orange (below average)
-- **0-39%**: Red (needs improvement)
+| Overall Score Range | Color Indicator     | Meaning            |
+|:---------------------|:--------------------|:-------------------|
+| 90-100%              | Dark Green           | Excellent          |
+| 80-89%               | Green                | Very Good          |
+| 70-79%               | Light Green          | Good               |
+| 60-69%               | Blue                 | Above Average      |
+| 50-59%               | Amber / Yellow       | Average            |
+| 40-49%               | Orange               | Below Average      |
+| 0-39%                | Red                  | Needs Improvement  |
 
-Individual resume sections are also scored from 1-10 with a similar color scheme:
-- **8-10**: Green (excellent)
-- **6-7**: Blue (good)
-- **4-5**: Yellow (average)
-- **2-3**: Orange (below average)
-- **1**: Red (poor)
+Each **resume section** is also scored individually from 1–10 with matching color coding.
 
-## API Routes
+---
 
-### `/api/extract-text`
-Processes uploaded document files and extracts text content.
+## ⚡ Deployment
 
-- **Method**: POST
-- **Parameters**: File in FormData
-- **Response**: JSON with extracted text
-
-## Deployment
-
-The application is configured for easy deployment on Vercel:
+Easily deploy to [Vercel](https://vercel.com/):
 
 ```bash
 npm run build
-# or
-vercel
+# then
+vercel --prod
 ```
 
-## Contributing
+---
+
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create a new branch (`git checkout -b feature/feature-name`)
+3. Commit your changes (`git commit -m "feat: add new feature"`)
+4. Push to GitHub (`git push origin feature/feature-name`)
+5. Open a Pull Request 🚀
 
-## License
+---
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 📄 License
 
-## Acknowledgments
+This project is licensed under the [MIT License](./LICENSE).
+
+---
+
+## 🙏 Acknowledgments
 
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Mammoth.js](https://github.com/mwilliamson/mammoth.js)
-- [PDF-Parse](https://github.com/modesty/pdf2json)
+- [pdfjs-dist](https://github.com/mozilla/pdfjs-dist)
+
+---
