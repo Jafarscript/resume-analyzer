@@ -46,7 +46,7 @@ const ResumeScoreCard = ({ score = 0, stats = {}, loading = false, onUpload, sco
 
   return (
     <section className="lg:basis-1/3">
-      <div className="flex flex-col items-center gap-5 rounded-lg border border-[#EAEAEA] bg-[#F7F7F7] px-8 py-8 shadow-md">
+      <div className="flex flex-col items-center gap-5 rounded-lg border border-[#EAEAEA] bg-[#F7F7F7] px-8 py-8 shadow-md  text-black">
         <h3 className="text-lg font-semibold">Resume Score</h3>
         <div className="relative w-full h-96 my-4">
           <svg viewBox="0 0 100 100" className="w-full h-full">

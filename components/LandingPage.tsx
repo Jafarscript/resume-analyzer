@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center pt-20 lg:pt-0 justify-center min-h-screen px-6 text-center bg-white">
-      <h1 className="text-4xl font-bold mb-6">
+    <main className="flex flex-col items-center py-20 lg:pt-0 justify-center min-h-screen px-6 text-center bg-white">
+      <h1 className="text-4xl font-bold mb-6 text-black">
         Resume Analyzer Powered by AI
       </h1>
       <p className="text-gray-600 max-w-xl mb-8">
@@ -28,7 +28,7 @@ export default function Home() {
 function FeatureCard({ title, description }: { title: string; description: string }) {
   return (
     <div className="border p-6 rounded-lg shadow-sm bg-white">
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <h3 className="text-xl font-semibold mb-2  text-black">{title}</h3>
       <p className="text-gray-500">{description}</p>
     </div>
   );

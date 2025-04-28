@@ -20,7 +20,7 @@ const ResumeFeedback = ({ feedback = [] }: { feedback: any[] }) => {
   }
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-[#F7F7F7] p-6 shadow-lg">
+    <div className="rounded-lg border border-gray-200 bg-[#F7F7F7] p-6 shadow-lg  text-black">
       {feedback.map((section, index) => (
         <div key={index} className="border-b last:border-none">
           <button
