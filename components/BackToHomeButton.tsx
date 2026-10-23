@@ -1,12 +1,18 @@
-// components/BackToHomeButton.jsx
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
-const BackToHomeButton = ({ text = 'Back to Home' }) => {
+interface BackToHomeButtonProps {
+  text?: string;
+}
+
+const BackToHomeButton = ({ text = "Back to Home" }: BackToHomeButtonProps) => {
   return (
-    <Link href="/" className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none self-start transition-colors duration-200">
-      <ArrowLeft className="w-4 h-4 mr-2" />
-      {text}
+    <Link
+      href="/"
+      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 bg-white border border-slate-200 rounded-lg shadow-2xs hover:bg-slate-50 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-blue-500/20 focus-visible:outline-none transition-colors duration-150"
+    >
+      <ArrowLeft className="w-3.5 h-3.5 text-slate-500" />
+      <span>{text}</span>
     </Link>
   );
 };

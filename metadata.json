@@ -1,0 +1,9 @@
+{
+  "name": "Resume Analyzer",
+  "description": "Upload your resume and receive personalized feedback, scoring, and skill analysis powered by AI.",
+  "prompt": "Resume Analyzer Powered by AI",
+  "permissions": [],
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
